@@ -54,10 +54,10 @@ app.delete('/delete-one/:id', async function (req, res) {
 const startServer = async () => {
     try {
         try {
-            await mongoose.connect('mongodb+srv://Developer:3RwoqNORAnMG8XBG@cluster0.inbyuy1.mongodb.net/?retryWrites=true&w=majority', {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            });
+            // await mongoose.connect('mongodb+srv://Developer:3RwoqNORAnMG8XBG@cluster0.inbyuy1.mongodb.net/?retryWrites=true&w=majority', {
+            //     useNewUrlParser: true,
+            //     useUnifiedTopology: true,
+            // });
 
             console.log('Connected to MongoDB');
         } catch (error) {
