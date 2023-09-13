@@ -51,8 +51,8 @@ app.post('/save-new-image/:url', async function (req, res) {
 
 app.delete('/delete-one-image/:id', async function (req, res) {
     try {
+        console.log(req,'req............')
         await image.deleteOne({ _id: new ObjectId(req.params.id) });
-
         res.status(200).send();
     } catch (error) {
         res.status(500).send(error.toString());
@@ -62,7 +62,7 @@ app.delete('/delete-one-image/:id', async function (req, res) {
 const startServer = async () => {
     try {
         try {
-            await mongoose.connect('mongodb+srv://workayushverma02:biYeKAAihzO1OSU2@cluster0.ftk2bgt.mongodb.net/paddytest', {
+            await mongoose.connect('mongodb+srv://Developer:3RwoqNORAnMG8XBG@cluster0.inbyuy1.mongodb.net/?retryWrites=true&w=majority', {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
             });
