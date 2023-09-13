@@ -18,7 +18,7 @@ const PORT = 5000;
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.get('/get-all-images', async function (req, res) {
+app.get('/get-all', async function (req, res) {
     try {
         res.status(200).json({
             data: await image.find()
@@ -28,19 +28,11 @@ app.get('/get-all-images', async function (req, res) {
     }
 });
 
-app.get('/get-one-image/:id', async function (req, res) {
+app.post('/save-new', async function (req, res) {
     try {
-        res.status(200).json({
-            data: await image.findById(req.params.id)
-        });
-    } catch (error) {
-        res.status(500).send(error.toString());
-    }
-});
+        const { url } = req.body;
 
-app.post('/save-new-image/:url', async function (req, res) {
-    try {
-        const newImage = new image({ url: req.params.url });
+        const newImage = new image({ url });
         await newImage.save();
 
         res.status(201).send();
@@ -49,7 +41,7 @@ app.post('/save-new-image/:url', async function (req, res) {
     }
 });
 
-app.delete('/delete-one-image/:id', async function (req, res) {
+app.delete('/delete-one/:id', async function (req, res) {
     try {
         console.log(req,'req............')
         await image.deleteOne({ _id: new ObjectId(req.params.id) });
