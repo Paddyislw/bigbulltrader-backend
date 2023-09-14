@@ -5,6 +5,8 @@ import cors from "cors";
 
 import image from "./models/image.js";
 
+console.log('Deployed')
+
 const app = express();
 
 const corsOptions = {
