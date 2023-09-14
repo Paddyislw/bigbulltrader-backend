@@ -52,27 +52,24 @@ app.delete("/delete-one/:id", async function (req, res) {
 });
 
 const startServer = async () => {
-  try {
     try {
-      await mongoose.connect(
-        "mongodb+srv://Developer:3RwoqNORAnMG8XBG@cluster0.inbyuy1.mongodb.net/?retryWrites=true&w=majority",
-        {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
+        try {
+            await mongoose.connect('mongodb+srv://Developer:3RwoqNORAnMG8XBG@cluster0.inbyuy1.mongodb.net/?retryWrites=true&w=majority', {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            });
+
+            console.log('Connected to MongoDB');
+        } catch (error) {
+            console.error('Error connecting to MongoDB:', error);
         }
-      );
 
-      console.log("Connected to MongoDB");
+        app.listen(PORT, () => {
+            console.log(`Server listening on http://localhost:${PORT}`);
+        });
     } catch (error) {
-      console.error("Error connecting to MongoDB:", error);
+        console.error('Error starting the server:', error);
     }
-
-    app.listen(PORT, () => {
-      console.log(`Server listening on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error("Error starting the server:", error);
-  }
 };
 
 startServer();
